@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+
+	<bean id="triangle" name="triangle-inline-alias" class="SpringFrameworkByJavaBrains.SpringFrameworkByJavaBrains.propertyAsObjects.Triangle" >
+		<!-- "ref" -> It can point to another bean id or bean alias -->
+		<property name="pointA" ref="point1"></property>
+		<property name="pointB" ref="point2"></property>
+		<property name="pointC" ref="point3"></property>
+
+
+		<!-- Example of inner bean -->
+		<!-- In case of of inner beans the objects can't be shared across the beans like the below case -->
+		<property name="pointD">
+			<bean class="SpringFrameworkByJavaBrains.SpringFrameworkByJavaBrains.propertyAsObjects.Point">
+				<property name="x" value="80"></property>
+				<property name="y" value="90"></property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="point1"
+		class="SpringFrameworkByJavaBrains.SpringFrameworkByJavaBrains.propertyAsObjects.Point">
+		<property name="x" value="0"></property>
+		<property name="y" value="10"></property>
+	</bean>
+
+	<bean id="point2"
+		class="SpringFrameworkByJavaBrains.SpringFrameworkByJavaBrains.propertyAsObjects.Point">
+		<property name="x" value="30"></property>
+		<property name="y" value="40"></property>
+	</bean>
+
+	<bean id="point3"
+		class="SpringFrameworkByJavaBrains.SpringFrameworkByJavaBrains.propertyAsObjects.Point">
+		<property name="x" value="50"></property>
+		<property name="y" value="60"></property>
+	</bean>
+	
+	<alias name="triangle" alias="triangle-alias"/>
+
+</beans>
